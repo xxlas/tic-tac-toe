@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomepageController!{% endblock %}
+
+{% block body %}
+<style>
+    .cross-background{
+        background-image: url({{ asset('images/X.jpeg') }});
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size:100%
+    }
+    .circle-background{
+        background-image: url({{ asset('images/O.jpeg') }});
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size:100%;
+    }
+</style>
+    <div class="container">
+        {% for i in 0..2 %}
+            {% for i in 0..2 %}
+                <div class="tic-tac-square-3"></div>
+            {% endfor %}
+        {% endfor %}
+    </div>
+<script>
+    $(".tic-tac-square-3, .tic-tac-square-5").click(function() {
+       $(this).addClass('cross-background');
+    });
+</script>
+{% endblock %}
