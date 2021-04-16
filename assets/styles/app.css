@@ -1,3 +1,25 @@
 body {
     background-color: lightgray;
 }
+.container {
+    align-content: center;
+    padding:5% 25% 5% 28%
+}
+
+.tic-tac-square-3 {
+    float:left;
+    width: 30%;
+    padding-bottom: 30%; /* = width for a 1:1 aspect ratio */
+    background-color: #FFFFFF;
+    border: 2px solid black;
+}
+.tic-tac-square-5{
+    float:left;
+    width: 16.6%;
+    padding-bottom: 16.6%; /* = width for a 1:1 aspect ratio */
+    background-color: #FFFFFF;
+    border: 2px solid black;
+}
+
+
+
