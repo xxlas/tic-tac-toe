@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomepageController!{% endblock %}
+{% block title %}Welcome to Tic-Tac-Toe !{% endblock %}
 
 {% block body %}
 <style>
@@ -17,16 +17,46 @@
         background-size:100%;
     }
 </style>
+    <div class="top-container">
+        <a href="{{ url('homepage') }}" type="button"> Reset </a>
+        {% for flashMessage in app.session.flashbag.get('warning') %}
+            <div class="message-warning">{{ flashMessage }}</div>
+        {% endfor %}
+        {% if board.getWinStatus() == 1 %}
+            <div class="message-warning">Cross wins! <br> Reset the game to play again! </div>
+        {% elseif board.getWinStatus() == 2 %}
+            <div class="message-warning">Circle wins! <br> Reset the game to play again!</div>
+        {% elseif board.getWinStatus() == 3 %}
+            <div class="message-warning">It's a draw! <br> Reset the game to play again!</div>
+        {% endif %}
+    </div>
     <div class="container">
-        {% for i in 0..2 %}
-            {% for i in 0..2 %}
-                <div class="tic-tac-square-3"></div>
-            {% endfor %}
+        <form action="{{ url('homepage') }}" method="get" id="tic-tac-form">
+            <input type="text" name="state" value="{{ state.getState() }}" hidden>
+            <input type="text" name="size" value="{{ board.getSize() }}" hidden>
+            <input type="text" name="turn" value="{{ board.getTurn() }}" hidden>
+            <input type="text" name="selectedPos" id="selectedPos" hidden>
+        </form>
+        {% for squareState in state.getStringStateAsArray() %}
+            {% if squareState == 0 %}
+                <div class="tic-tac-square tic-tac-square-{{ board.getSize() }}" id={{ loop.index0 }}></div>
+            {% elseif squareState ==  1 %}
+                <div class="tic-tac-square cross-background tic-tac-square-{{ board.getSize() }}" id={{ loop.index0 }}></div>
+            {% elseif squareState == 2 %}
+                <div class="tic-tac-square circle-background tic-tac-square-{{ board.getSize() }}" id={{ loop.index0 }}></div>
+            {% else %}
+                <div class="tic-tac-square tic-tac-square-{{ board.getSize() }}" id={{ loop.index0 }}></div>
+            {% endif %}
+
         {% endfor %}
     </div>
-<script>
-    $(".tic-tac-square-3, .tic-tac-square-5").click(function() {
-       $(this).addClass('cross-background');
+{% if board.getWinStatus() == 0 %}
+    <script>
+    $(".tic-tac-square").click(function() {
+       $("#selectedPos").val($(this).prop('id'));
+       $("#tic-tac-form").submit();
     });
-</script>
+    </script>
+{% endif %}
+
 {% endblock %}
