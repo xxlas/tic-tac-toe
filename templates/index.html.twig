@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Welcome to Tic-Tac-Toe !{% endblock %}
+
+{% block body %}
+    <div class="container-wide">
+        <div class="big-button-div">
+            <form action="{{ url('homepage') }}" method="get">
+                <button type="submit" class="big-button" onclick=""> Play against other player </button>
+            </form>
+        </div>
+        <div class="big-button-div">
+            <form action="{{ url('homepage') }}" method="get">
+                <input type="hidden" name="vsCPU" value="true">
+                <input type="hidden" name="difficulty" value="0">
+                <button type="submit" class="big-button"> Play against easy AI </button>
+            </form>
+        </div>
+        <div class="big-button-div">
+            <form action="{{ url('homepage') }}" method="get">
+                <input type="hidden" name="vsCPU" value="true">
+                <input type="hidden" name="difficulty" value="1">
+                <button type="submit" class="big-button"> Play against 'smart' AI </button>
+            </form>
+        </div>
+
+    </div>
+{% endblock %}

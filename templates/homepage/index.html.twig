@@ -18,17 +18,34 @@
     }
 </style>
     <div class="top-container">
-        <a href="{{ url('homepage') }}" type="button"> Reset </a>
-        {% for flashMessage in app.session.flashbag.get('warning') %}
-            <div class="message-warning">{{ flashMessage }}</div>
-        {% endfor %}
-        {% if board.getWinStatus() == 1 %}
-            <div class="message-warning">Cross wins! <br> Reset the game to play again! </div>
-        {% elseif board.getWinStatus() == 2 %}
-            <div class="message-warning">Circle wins! <br> Reset the game to play again!</div>
-        {% elseif board.getWinStatus() == 3 %}
-            <div class="message-warning">It's a draw! <br> Reset the game to play again!</div>
-        {% endif %}
+        <div class="gameplay-page-top-button-div">
+            <div class="gameplay-page-top-div ">
+                <form action="{{ url('homepage') }}">
+                    <input type="hidden" name="vsCPU" value="{{ vsCPU }}">
+                    <input type="hidden" name="difficulty" value="{{ difficulty }}">
+                    <button type="submit"> Reset </button>
+                </form>
+            </div>
+            <div class="gameplay-page-top-div ">
+                <form action="{{ url('index') }}">
+                    <button type="submit"> Startpage </button>
+                </form>
+            </div>
+        </div>
+
+        <div class="gameplay-page-top-message-div">
+            {% for flashMessage in app.session.flashbag.get('warning') %}
+                <div class="message-warning">{{ flashMessage }}</div>
+            {% endfor %}
+            {% if board.getWinStatus() == 1 %}
+                <div class="message-warning">Cross wins! <br> Reset the game to play again! </div>
+            {% elseif board.getWinStatus() == 2 %}
+                <div class="message-warning">Circle wins! <br> Reset the game to play again!</div>
+            {% elseif board.getWinStatus() == 3 %}
+                <div class="message-warning">It's a draw! <br> Reset the game to play again!</div>
+            {% endif %}
+        </div>
+
     </div>
     <div class="container">
         <form action="{{ url('homepage') }}" method="get" id="tic-tac-form">
@@ -36,6 +53,8 @@
             <input type="text" name="size" value="{{ board.getSize() }}" hidden>
             <input type="text" name="turn" value="{{ board.getTurn() }}" hidden>
             <input type="text" name="selectedPos" id="selectedPos" hidden>
+            <input type="hidden" name="vsCPU" value="{{ vsCPU }}">
+            <input type="hidden" name="difficulty" value="{{ difficulty }}">
         </form>
         {% for squareState in state.getStringStateAsArray() %}
             {% if squareState == 0 %}

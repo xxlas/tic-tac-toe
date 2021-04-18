@@ -4,7 +4,9 @@ namespace App\Controller;
 
 use App\Entity\Board;
 use App\Entity\BoardState;
+use App\Entity\Computer;
 use App\Services\BoardLogicService;
+use App\Services\ComputerTurnService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -21,28 +23,49 @@ class HomepageController extends AbstractController
      * @var FlashBagInterface
      */
     private $flashBag;
+    /**
+     * @var ComputerTurnService
+     */
+    private $computerTurnService;
 
     /**
      * HomepageController constructor.
      */
-    public function __construct(BoardLogicService $boardLogicService, FlashBagInterface $flashBag)
+    public function __construct(BoardLogicService $boardLogicService, FlashBagInterface $flashBag, ComputerTurnService $computerTurnService)
     {
         $this->boardLogicService = $boardLogicService;
         $this->flashBag = $flashBag;
+        $this->computerTurnService = $computerTurnService;
     }
 
+    /**
+     * @Route("/", name="index")
+     */
+    public function index(): Response
+    {
+        return $this->render(
+            'index.html.twig');
+    }
 
     /**
      * @Route("/homepage", name="homepage")
      */
-    public function index(Request $req): Response
+    public function homepage(Request $req): Response
     {
         $requestFields = $req->query->all();
-        $message = null;
-        if(sizeof($requestFields) > 0) {
+        $vsCPU = $requestFields['vsCPU'] ?? false;
+        $cpuDifficulty = $requestFields['difficulty'] ?? -1;
+        if(sizeof($requestFields) > 2) {
             $board = new Board($requestFields['size'], $requestFields['turn']);
             $boardState = new BoardState($board, $requestFields['state']);
             $message = $this->boardLogicService->calculateTurn($board, $boardState, $requestFields['selectedPos']);
+
+
+            // to do implement whether the game is vs AI
+            if($vsCPU == true && is_null($message) && $this->boardLogicService->checkIfGameHasAnyMovesLeft($boardState)) {
+                $computerSelectedTurn = $this->computerTurnService->getWhereWillComputerMove($cpuDifficulty, $boardState, $board);
+                $this->boardLogicService->calculateTurn($board, $boardState, $computerSelectedTurn);
+            }
             $this->flashBag->add('warning', $message);
         } else {
             $board = new Board(3);
@@ -50,10 +73,11 @@ class HomepageController extends AbstractController
         }
 
         return $this->render('homepage/index.html.twig', [
-            'controller_name' => 'HomepageController',
             'board' => $board,
             'state' => $boardState,
             'turn' => $board->getTurn(),
+            'vsCPU' => $vsCPU,
+            'difficulty' => $cpuDifficulty
         ]);
     }
 }
