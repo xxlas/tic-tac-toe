@@ -6,6 +6,11 @@ body {
     padding:5% 25% 5% 28%
 }
 
+.container-wide {
+    justify-content: center;
+    padding: 5% 13% 5% 13%
+}
+
 .tic-tac-square-3 {
     float:left;
     width: 30%;
@@ -19,6 +24,31 @@ body {
     padding-bottom: 16.6%; /* = width for a 1:1 aspect ratio */
     background-color: #FFFFFF;
     border: 2px solid black;
+}
+
+.big-button {
+    font-size: large;
+    padding:2rem;
+}
+
+.big-button-div {
+    float:left;
+    width:30%;
+    min-width: 30%;
+    max-width: 30%;
+    padding: 1rem;
+}
+.gameplay-page-top-div {
+    float:left;
+    width:4rem;
+}
+
+.gameplay-page-top-button-div {
+    width: 100%;
+}
+.gameplay-page-top-message-div {
+    padding: 2rem 0 0 0;
+    width: 100%;
 }
 
 

@@ -26,8 +26,9 @@ class BoardLogicService
             if (!$this->isMoveLegal($selectedPosition, $state)) {
                 return "Cannot select occupied square";
             }
-            $this->incrementTurn($board);
             $this->updateBoardState($board->getTurn(), $selectedPosition, $state);
+            $this->incrementTurn($board);
+
 
             $winner = $this->checkIfSomeoneWon($board, $state);
             if(is_int($winner)) {
@@ -89,9 +90,13 @@ class BoardLogicService
      */
     private function isMoveLegal(int $selectedPosition, BoardState $boardState): bool
     {
-        return $boardState->getStringStateAsArray()[$selectedPosition] == 0;
+        return $boardState->getStringStateAsArray()[$selectedPosition] == self::empty;
     }
 
+    /**
+     * @param Board $board
+     * @param BoardState $boardState
+     */
     private function checkIfSomeoneWon(Board $board, BoardState $boardState)
     {
         $size = $board->getSize();
@@ -129,46 +134,45 @@ class BoardLogicService
         }
     }
 
+    /**
+     * @param array $stateArray
+     * @return bool
+     */
     private function checkIfDraw(array $stateArray): bool
     {
         return !in_array(0, $stateArray); // if no zeroes left after all win conditions, it means it's draw.
     }
 
+    /**
+     * @param array $chunkedState
+     * @param int $size
+     * @return false|int
+     */
     private function checkHorizontalWinCondition(array $chunkedState, int $size)
     {
         for ($i = 0; $i < $size; $i++) {
-            $winCondition = 0;
+
             $currentSymbol = $chunkedState[$i][0];
-            if ($currentSymbol === self::empty) {
-                continue;
-            }
-            for ($j = 0; $j < $size; $j++) {
-                if ($chunkedState[$i][$j] === $currentSymbol) {
-                    $winCondition++;
-                }
-            }
-            if ($winCondition === $size) {
+            if ($currentSymbol === self::empty) { continue; }
+
+            if (array_count_values($chunkedState[$i])[$currentSymbol] === $size) {
                 return (int)$currentSymbol;
             }
         }
-
         return false;
     }
 
+    /**
+     * @param array $chunkedState
+     * @param int $size
+     * @return false|int
+     */
     private function checkVerticalWinCondition(array $chunkedState, int $size)
     {
         for ($i = 0; $i < $size; $i++) {
-            $winCondition = 0;
             $currentSymbol = $chunkedState[0][$i];
-            if ($currentSymbol === self::empty) {
-                continue;
-            }
-            for ($j = 0; $j < $size; $j++) {
-                if ($chunkedState[$j][$i] === $currentSymbol) {
-                    $winCondition++;
-                }
-            }
-            if ($winCondition === $size) {
+            if ($currentSymbol === self::empty) { continue; }
+            if (array_count_values(array_column($chunkedState, $i))[$currentSymbol] === $size) {
                 return (int)$currentSymbol;
             }
         }
@@ -184,7 +188,7 @@ class BoardLogicService
     {
         $winCondition = 0;
         $currentSymbol = $chunkedState[0][0];
-        if($currentSymbol === 0) { return false; } // if start is empty it cant be fully checked
+        if($currentSymbol === self::empty) { return false; } // if start is empty it cant be fully checked
         for ($i = 0; $i < $size; $i++) {
             if($currentSymbol !== $chunkedState[$i][$i]) {
                 return false;
@@ -208,7 +212,7 @@ class BoardLogicService
         $winCondition = 0;
         $currentSymbol = $chunkedState[0][$size - 1];
 
-        if($currentSymbol === 0) { return false; } // if start is empty it cant be fully checked
+        if($currentSymbol === self::empty) { return false; } // if start is empty it cant be fully checked
         for ($i = 0; $i < $size; $i++) {
             if($currentSymbol !== $chunkedState[$i][$size - $i - 1]) {
                 return false;
@@ -221,5 +225,14 @@ class BoardLogicService
         }
 
         return false;
+    }
+
+    /**
+     * @param BoardState $state
+     * @return bool
+     */
+    public function checkIfGameHasAnyMovesLeft(BoardState $state): bool
+    {
+        return in_array(0, $state->getStringStateAsArray());
     }
 }
