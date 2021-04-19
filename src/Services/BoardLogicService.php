@@ -3,47 +3,44 @@
 
 namespace App\Services;
 
-
 use App\Entity\Board;
 use App\Entity\BoardState;
 
 class BoardLogicService
 {
-    const empty = 0; // empty square space
-    const cross = 1;
-    const circle = 2;
-    const draw = 3;
+    public const EMPTY = 0; // empty square space
+    public const CROSS = 1;
+    public const CIRCLE = 2;
+    public const DRAW = 3;
 
     /**
      * @param Board $board
      * @param BoardState $state
      * @param int $selectedPosition
+     * @return string|void
      */
     public function calculateTurn(Board $board, BoardState $state, int $selectedPosition)
     {
         $winner = $this->checkIfSomeoneWon($board, $state);
-        if(!$winner) {
+        if (!$winner) {
             if (!$this->isMoveLegal($selectedPosition, $state)) {
                 return "Cannot select occupied square";
             }
             $this->updateBoardState($board->getTurn(), $selectedPosition, $state);
             $this->incrementTurn($board);
-
-
             $winner = $this->checkIfSomeoneWon($board, $state);
-            if(is_int($winner)) {
+            if (is_int($winner)) {
                 $board->setWinStatus($winner);
             }
         } else {
             $board->setWinStatus($winner);
         }
-
     }
 
     /**
      * @param Board $board
      */
-    private function incrementTurn(Board $board)
+    private function incrementTurn(Board $board): void
     {
         $board->setTurn($board->getTurn() + 1);
     }
@@ -56,10 +53,11 @@ class BoardLogicService
     {
         switch ($turn % 2) {
             case 0:
-                return self::cross; // cross always starts
+                return self::CROSS; // cross always starts
             case 1:
-                return self::circle;
+                return self::CIRCLE;
         }
+        return self::EMPTY;
     }
 
     /**
@@ -67,7 +65,7 @@ class BoardLogicService
      * @param int $selectedPosition
      * @param BoardState $boardState
      */
-    private function updateBoardState(int $turn, int $selectedPosition, BoardState $boardState)
+    private function updateBoardState(int $turn, int $selectedPosition, BoardState $boardState): void
     {
         $state = $boardState->getStringStateAsArray();
         $state[$selectedPosition] = $this->calculateWhosTurn($turn);
@@ -90,12 +88,13 @@ class BoardLogicService
      */
     private function isMoveLegal(int $selectedPosition, BoardState $boardState): bool
     {
-        return $boardState->getStringStateAsArray()[$selectedPosition] == self::empty;
+        return (int)$boardState->getStringStateAsArray()[$selectedPosition] === self::EMPTY;
     }
 
     /**
      * @param Board $board
      * @param BoardState $boardState
+     * @return false|int
      */
     private function checkIfSomeoneWon(Board $board, BoardState $boardState)
     {
@@ -115,23 +114,23 @@ class BoardLogicService
             return $winner;
         }
 
-        if(!$winner) {
+        if (!$winner) {
             $winner = $this->checkRightToLeftDiagonalWinCondition($chunkedArray, $size);
         } else {
             return $winner;
         }
 
-        if(!$winner) {
+        if (!$winner) {
             $winner = $this->checkIfDraw($boardState->getStringStateAsArray());
         } else {
             return $winner;
         }
 
         if ($winner) {
-            return self::draw;
-        } else {
-            return false;
+            return self::DRAW;
         }
+
+        return false;
     }
 
     /**
@@ -151,14 +150,16 @@ class BoardLogicService
     private function checkHorizontalWinCondition(array $chunkedState, int $size)
     {
         for ($i = 0; $i < $size; $i++) {
-
             $currentSymbol = $chunkedState[$i][0];
-            if ($currentSymbol === self::empty) { continue; }
+            if ($currentSymbol === self::EMPTY) {
+                continue;
+            }
 
             if (array_count_values($chunkedState[$i])[$currentSymbol] === $size) {
                 return (int)$currentSymbol;
             }
         }
+
         return false;
     }
 
@@ -171,7 +172,9 @@ class BoardLogicService
     {
         for ($i = 0; $i < $size; $i++) {
             $currentSymbol = $chunkedState[0][$i];
-            if ($currentSymbol === self::empty) { continue; }
+            if ($currentSymbol === self::EMPTY) {
+                continue;
+            }
             if (array_count_values(array_column($chunkedState, $i))[$currentSymbol] === $size) {
                 return (int)$currentSymbol;
             }
@@ -183,20 +186,23 @@ class BoardLogicService
     /**
      * @param array $chunkedState
      * @param int $size
+     * @return false|int
      */
     private function checkLeftToRightDiagonalWinCondition(array $chunkedState, int $size)
     {
         $winCondition = 0;
         $currentSymbol = $chunkedState[0][0];
-        if($currentSymbol === self::empty) { return false; } // if start is empty it cant be fully checked
+        if ($currentSymbol === self::EMPTY) {
+            return false;
+        } // if start is empty it cant be fully checked
         for ($i = 0; $i < $size; $i++) {
-            if($currentSymbol !== $chunkedState[$i][$i]) {
+            if ($currentSymbol !== $chunkedState[$i][$i]) {
                 return false;
-            } else {
-                $winCondition++;
             }
+
+            $winCondition++;
         }
-        if($winCondition === $size) {
+        if ($winCondition === $size) {
             return (int)$currentSymbol;
         }
 
@@ -206,21 +212,24 @@ class BoardLogicService
     /**
      * @param array $chunkedState
      * @param int $size
+     * @return false|int
      */
     private function checkRightToLeftDiagonalWinCondition(array $chunkedState, int $size)
     {
         $winCondition = 0;
         $currentSymbol = $chunkedState[0][$size - 1];
 
-        if($currentSymbol === self::empty) { return false; } // if start is empty it cant be fully checked
+        if ($currentSymbol === self::EMPTY) {
+            return false;
+        } // if start is empty it cant be fully checked
         for ($i = 0; $i < $size; $i++) {
-            if($currentSymbol !== $chunkedState[$i][$size - $i - 1]) {
+            if ($currentSymbol !== $chunkedState[$i][$size - $i - 1]) {
                 return false;
-            } else {
-                $winCondition++;
             }
+
+            $winCondition++;
         }
-        if($winCondition === $size) {
+        if ($winCondition === $size) {
             return (int)$currentSymbol;
         }
 
