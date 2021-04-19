@@ -5,17 +5,16 @@ namespace App\Entity;
 use App\Repository\BoardStateRepository;
 use Doctrine\ORM\Mapping as ORM;
 
-/**
- * @ORM\Entity(repositoryClass=BoardStateRepository::class)
- */
 class BoardState
 {
-
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @var string
      */
     private $state;
 
+    /**
+     * @var Board
+     */
     private $board;
 
     /**
@@ -26,7 +25,7 @@ class BoardState
     public function __construct(Board $board, $state = null)
     {
         $this->board = $board;
-        if(is_null($state)) {
+        if (is_null($state)) {
             $this->state = $this->generateDefaultState();
         } else {
             $this->state = $state;

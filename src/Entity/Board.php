@@ -11,15 +11,18 @@ use Doctrine\ORM\Mapping as ORM;
 class Board
 {
     /**
-     * @ORM\Column(type="integer", nullable=true)
+     * @var int
      */
     private $size;
 
     /**
-     * @ORM\Column(type="integer", nullable=true)
+     * @var int|mixed
      */
     private $turn;
 
+    /**
+     * @var int
+     */
     private $winStatus = 0;
 
     /**
@@ -58,9 +61,9 @@ class Board
     }
 
     /**
-     * @return mixed
+     * @return int
      */
-    public function getWinStatus()
+    public function getWinStatus(): int
     {
         return $this->winStatus;
     }
@@ -68,9 +71,11 @@ class Board
     /**
      * @param mixed $winStatus
      */
-    public function setWinStatus($winStatus): void
+    public function setWinStatus($winStatus): self
     {
         $this->winStatus = $winStatus;
+
+        return $this;
     }
 
 

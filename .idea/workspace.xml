@@ -2,16 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="40f75523-f102-4a98-8ade-228407898b59" name="Default Changelist" comment="Added basic frontend part of the game.">
-      <change afterPath="$PROJECT_DIR$/src/Entity/Computer.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Entity/RandomComputer.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Entity/SmartComputer.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Services/ComputerTurnService.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/index.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/scripts.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Factories/BoardFactory.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Factories/BoardStateFactory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/styles/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/app.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/HomepageController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/HomepageController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Board.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Board.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/BoardState.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/BoardState.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Computer.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/ComputerMoveServices/Computer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/RandomComputer.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/ComputerMoveServices/RandomComputer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/SmartComputer.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/ComputerMoveServices/SmartComputer.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Services/BoardLogicService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/BoardLogicService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/homepage/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/homepage/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Services/ComputerTurnService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/ComputerTurnService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webpack.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.config.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,12 +24,15 @@
   </component>
   <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
-    <execution />
+    <execution>
+      <executable path="composer" />
+    </execution>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="HTML File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -169,13 +176,23 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/assets/img" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
-    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.Twig" />
+    <property name="settings.editor.selected.configurable" value="settings.php.quality.tools" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/assets/img" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/Services/ComputerMoveServices" />
+      <recent name="$PROJECT_DIR$/src/Services" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="phpunit.xml.dist" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
+      <TestRunner scope="XML" />
+      <method v="2" />
+    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
@@ -192,6 +209,9 @@
       <workItem from="1618424046255" duration="87000" />
       <workItem from="1618424408894" duration="43000" />
       <workItem from="1618424485382" duration="9249000" />
+      <workItem from="1618774360491" duration="1643000" />
+      <workItem from="1618820241940" duration="143000" />
+      <workItem from="1618820410522" duration="11183000" />
     </task>
     <task id="LOCAL-00001" summary="Initial symfony project commit.">
       <created>1618423640193</created>
@@ -214,7 +234,14 @@
       <option name="project" value="LOCAL" />
       <updated>1618501713105</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Added new index page from where you can select if you want to play vs human or a couple of cpu players.&#10;Added two cpu difficulties to play against.&#10;Added cpu parameters to the requests going from front to backend and viceversa.&#10;Added a bit more style to the app.css so that the program would look slightly more presentable.">
+      <created>1618773910167</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1618773910167</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -236,6 +263,7 @@
     <MESSAGE value="Initial symfony project commit." />
     <MESSAGE value="Various config/package changes.&#10;Basic controller and twig view added." />
     <MESSAGE value="Added basic frontend part of the game." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added basic frontend part of the game." />
+    <MESSAGE value="Added new index page from where you can select if you want to play vs human or a couple of cpu players.&#10;Added two cpu difficulties to play against.&#10;Added cpu parameters to the requests going from front to backend and viceversa.&#10;Added a bit more style to the app.css so that the program would look slightly more presentable." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added new index page from where you can select if you want to play vs human or a couple of cpu players.&#10;Added two cpu difficulties to play against.&#10;Added cpu parameters to the requests going from front to backend and viceversa.&#10;Added a bit more style to the app.css so that the program would look slightly more presentable." />
   </component>
 </project>
