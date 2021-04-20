@@ -1,17 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="40f75523-f102-4a98-8ade-228407898b59" name="Default Changelist" comment="Added basic frontend part of the game.">
-      <change afterPath="$PROJECT_DIR$/tests/Entity/BoardStateTest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/Entity/BoardTest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/Services/BoardLogicServiceTest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/Services/ComputerMoveServices/SmartComputerTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/tic-tac-toe.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/tic-tac-toe.iml" afterDir="false" />
+    <list default="true" id="40f75523-f102-4a98-8ade-228407898b59" name="Default Changelist" comment="Added README.md with instructions on how to start the project.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
