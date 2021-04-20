@@ -2,20 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="40f75523-f102-4a98-8ade-228407898b59" name="Default Changelist" comment="Added basic frontend part of the game.">
-      <change afterPath="$PROJECT_DIR$/assets/scripts.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Factories/BoardFactory.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Factories/BoardStateFactory.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/Entity/BoardStateTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/Entity/BoardTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/Services/BoardLogicServiceTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/Services/ComputerMoveServices/SmartComputerTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/tic-tac-toe.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/tic-tac-toe.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/HomepageController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/HomepageController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Board.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Board.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/BoardState.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/BoardState.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Computer.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/ComputerMoveServices/Computer.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/RandomComputer.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/ComputerMoveServices/RandomComputer.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/SmartComputer.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/ComputerMoveServices/SmartComputer.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Services/BoardLogicService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/BoardLogicService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Services/ComputerTurnService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/ComputerTurnService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webpack.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,7 +49,7 @@
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
   </component>
-  <component name="PhpWorkspaceProjectConfiguration">
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP 7.3">
     <include_path>
       <path value="$PROJECT_DIR$/vendor/nikic/php-parser" />
       <path value="$PROJECT_DIR$/vendor/sensio/framework-extra-bundle" />
@@ -158,6 +154,34 @@
       <path value="$PROJECT_DIR$/vendor/egulias/email-validator" />
       <path value="$PROJECT_DIR$/vendor/laminas/laminas-zendframework-bridge" />
       <path value="$PROJECT_DIR$/vendor/symfony/webpack-encore-bundle" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/type" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/lines-of-code" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/recursion-context" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/diff" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/code-unit-reverse-lookup" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/complexity" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/object-reflector" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/object-enumerator" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/global-state" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/comparator" />
+      <path value="$PROJECT_DIR$/vendor/phar-io/version" />
+      <path value="$PROJECT_DIR$/vendor/phar-io/manifest" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/php-file-iterator" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/php-invoker" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/php-code-coverage" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/php-text-template" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/phpunit" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/php-timer" />
+      <path value="$PROJECT_DIR$/vendor/squizlabs/php_codesniffer" />
+      <path value="$PROJECT_DIR$/vendor/phpspec/prophecy" />
+      <path value="$PROJECT_DIR$/vendor/myclabs/deep-copy" />
+      <path value="$PROJECT_DIR$/vendor/theseer/tokenizer" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/resource-operations" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/exporter" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/environment" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/code-unit" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/cli-parser" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/version" />
     </include_path>
   </component>
   <component name="ProblemsViewState">
@@ -176,7 +200,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/assets/img" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
-    <property name="settings.editor.selected.configurable" value="settings.php.quality.tools" />
+    <property name="settings.editor.selected.configurable" value="php.test.frameworks.configurable" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -188,11 +212,48 @@
       <recent name="$PROJECT_DIR$/src/Services" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="PHPUnit.tests">
+    <configuration name="BoardLogicServiceTest.testIncrementTurn" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="App\Tests\Services\BoardLogicServiceTest" configuration_file="$PROJECT_DIR$/phpunit.xml.dist" file="$PROJECT_DIR$/tests/Services/BoardLogicServiceTest.php" method="testIncrementTurn" scope="Method" />
+      <method v="2" />
+    </configuration>
+    <configuration name="SmartComputerTest.testCheckIfCpuChooseCenterPosition" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="App\Tests\Services\ComputerMoveServices\SmartComputerTest" configuration_file="$PROJECT_DIR$/phpunit.xml.dist" file="$PROJECT_DIR$/tests/Services/ComputerMoveServices/SmartComputerTest.php" method="testCheckIfCpuChooseCenterPosition" scope="Method" />
+      <method v="2" />
+    </configuration>
+    <configuration name="SmartComputerTest.testCheckIfWinConditionPossibleHorizontally" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="App\Tests\Services\ComputerMoveServices\SmartComputerTest" configuration_file="$PROJECT_DIR$/phpunit.xml.dist" file="$PROJECT_DIR$/tests/Services/ComputerMoveServices/SmartComputerTest.php" method="testCheckIfWinConditionPossibleHorizontally" scope="Method" />
+      <method v="2" />
+    </configuration>
+    <configuration name="SmartComputerTest.testCheckIfWinConditionPossibleVertically" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="App\Tests\Services\ComputerMoveServices\SmartComputerTest" configuration_file="$PROJECT_DIR$/phpunit.xml.dist" file="$PROJECT_DIR$/tests/Services/ComputerMoveServices/SmartComputerTest.php" method="testCheckIfWinConditionPossibleVertically" scope="Method" />
+      <method v="2" />
+    </configuration>
     <configuration name="phpunit.xml.dist" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
       <TestRunner scope="XML" />
       <method v="2" />
     </configuration>
+    <configuration name="tests" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner configuration_file="$PROJECT_DIR$/phpunit.xml.dist" directory="$PROJECT_DIR$/tests" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="PHPUnit.phpunit.xml.dist" />
+      <item itemvalue="PHPUnit.tests" />
+      <item itemvalue="PHPUnit.BoardLogicServiceTest.testIncrementTurn" />
+      <item itemvalue="PHPUnit.SmartComputerTest.testCheckIfWinConditionPossibleVertically" />
+      <item itemvalue="PHPUnit.SmartComputerTest.testCheckIfWinConditionPossibleHorizontally" />
+      <item itemvalue="PHPUnit.SmartComputerTest.testCheckIfCpuChooseCenterPosition" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="PHPUnit.tests" />
+        <item itemvalue="PHPUnit.SmartComputerTest.testCheckIfCpuChooseCenterPosition" />
+        <item itemvalue="PHPUnit.SmartComputerTest.testCheckIfWinConditionPossibleHorizontally" />
+        <item itemvalue="PHPUnit.SmartComputerTest.testCheckIfWinConditionPossibleVertically" />
+        <item itemvalue="PHPUnit.BoardLogicServiceTest.testIncrementTurn" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
@@ -265,5 +326,9 @@
     <MESSAGE value="Added basic frontend part of the game." />
     <MESSAGE value="Added new index page from where you can select if you want to play vs human or a couple of cpu players.&#10;Added two cpu difficulties to play against.&#10;Added cpu parameters to the requests going from front to backend and viceversa.&#10;Added a bit more style to the app.css so that the program would look slightly more presentable." />
     <option name="LAST_COMMIT_MESSAGE" value="Added new index page from where you can select if you want to play vs human or a couple of cpu players.&#10;Added two cpu difficulties to play against.&#10;Added cpu parameters to the requests going from front to backend and viceversa.&#10;Added a bit more style to the app.css so that the program would look slightly more presentable." />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/tic_tac_toe@BoardTest.xml" NAME="BoardTest Coverage Results" MODIFIED="1618856494988" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="PhpCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/tic_tac_toe@BoardLogicServiceTest_testCheckLeftToRightDiagonalWinCondition.xml" NAME="BoardLogicServiceTest.testCheckLeftToRightDiagonalWinCondition Coverage Results" MODIFIED="1618899124251" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="PhpCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>
