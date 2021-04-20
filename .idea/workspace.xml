@@ -2,6 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="40f75523-f102-4a98-8ade-228407898b59" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/config/packages/assets.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/packages/prod/webpack_encore.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/packages/test/webpack_encore.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/packages/webpack_encore.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -300,7 +304,14 @@
       <option name="project" value="LOCAL" />
       <updated>1618906559524</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Added composer.json and package.json files">
+      <created>1618908798081</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1618908798081</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -324,7 +335,8 @@
     <MESSAGE value="Added basic frontend part of the game." />
     <MESSAGE value="Added new index page from where you can select if you want to play vs human or a couple of cpu players.&#10;Added two cpu difficulties to play against.&#10;Added cpu parameters to the requests going from front to backend and viceversa.&#10;Added a bit more style to the app.css so that the program would look slightly more presentable." />
     <MESSAGE value="Added README.md with instructions on how to start the project." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added README.md with instructions on how to start the project." />
+    <MESSAGE value="Added composer.json and package.json files" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added composer.json and package.json files" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/tic_tac_toe@BoardTest.xml" NAME="BoardTest Coverage Results" MODIFIED="1618856494988" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="PhpCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
